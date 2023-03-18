@@ -1,6 +1,7 @@
 package com.example.composetemplate.view.main
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -20,6 +21,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.composetemplate.view.base.CustomDialog
 import com.example.composetemplate.view.dashboard.home.HomeScreen
 import com.example.composetemplate.view.dashboard.profile.ProfileScreen
 import com.example.composetemplate.view.dashboard.settings.SettingScreen
@@ -83,7 +85,9 @@ fun MyNavHost(
     }
     NavHost(modifier = modifier, navController = navHostController, startDestination = Home.route) {
         composable(route = Home.route) {
+            val showDialog = remember { mutableStateOf(false) }
             HomeScreen(
+                modifier = Modifier.fillMaxHeight(),
                 tabs = myViewModel.tabsList,
                 selectedTab = selectedTab,
                 onTabClicked = {
@@ -91,8 +95,12 @@ fun MyNavHost(
                     selectedTab = it
                 },
                 onAccountClicked = { navHostController.navigateToSingleAccount(it.name) },
-                onBillClicked = { navHostController.navigateToSingleBill(it.name) }
+                onBillClicked = { navHostController.navigateToSingleBill(it.name) },
+                onFABClicked = { showDialog.value = true }
             )
+            CustomDialog(value = "", isShown = showDialog.value, setShowDialog = {
+                showDialog.value = it
+            }, setValue = {})
         }
         composable(route = Setting.route) {
             SettingScreen()
