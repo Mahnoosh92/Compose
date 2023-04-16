@@ -1,4 +1,4 @@
-package com.example.composetemplate.data.datasource.remote
+package com.example.composetemplate.data.datasource.remote.trend
 
 import com.example.composetemplate.data.models.local.ResultWrapper
 import com.example.composetemplate.data.models.local.Trend

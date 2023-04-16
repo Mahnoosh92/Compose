@@ -1,6 +1,5 @@
-package com.example.composetemplate.data.datasource.remote
+package com.example.composetemplate.data.datasource.remote.trend
 
-import android.util.Log
 import com.example.composetemplate.data.api.ApiService
 import com.example.composetemplate.data.models.local.ResultWrapper
 import com.example.composetemplate.data.models.local.Trend

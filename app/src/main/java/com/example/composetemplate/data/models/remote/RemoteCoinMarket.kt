@@ -1,12 +1,13 @@
 package com.example.composetemplate.data.models.remote
 
-import com.example.composetemplate.data.models.local.Coin
+import com.example.composetemplate.data.models.local.CoinMarket
 import com.google.gson.annotations.SerializedName
 
-data class RemoteCoin(
-    @SerializedName("id") val id: String,
-    @SerializedName("name") val name: String,
-    @SerializedName("symbol") val symbol: String
+data class RemoteCoinMarket(
+    @SerializedName("id") val id: String?,
+    @SerializedName("image") val image: String?,
+    @SerializedName("name") val name: String?,
+    @SerializedName("symbol") val symbol: String?
 ) {
-    fun toCoin() = Coin(id = id, name = name, symbol = symbol)
+    fun toCoinMarket() = CoinMarket(id = id, image = image, name = name, symbol = symbol)
 }
